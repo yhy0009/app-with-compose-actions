@@ -1,7 +1,7 @@
 name: App With Github Actions with docker-compose CI/CD
 
 on:
-  workflow_dispatch
+  push
 
 jobs:
   ci:
@@ -15,10 +15,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Make application-prod.properties
+    - name: Make application.properties
       run: |
-        cd ./src/main/resources
-        touch ./application.properties
         echo "${{ secrets.PROPERTIES }}" > ./application.properties
       shell: bash
       
