@@ -15,8 +15,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Make application.properties
+    - name: Make application-prod.properties
       run: |
+        cd ./src/main/resources
+        touch ./application.properties
         echo "${{ secrets.PROPERTIES }}" > ./application.properties
       shell: bash
       
